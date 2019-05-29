@@ -134,17 +134,19 @@
             window.fnRecarregarLabelsComponenteDateRanger = [];
         }
 
-        window.fnRecarregarLabelsComponenteDateRanger.push((options) => {
+		var fakeThis = this;
+
+        window.fnRecarregarLabelsComponenteDateRanger.push(function(options) {
             if (options.applyLabel != null) {
-                this.container.find('.applyBtn').html(options.applyLabel);
+                fakeThis.container.find('.applyBtn').html(options.applyLabel);
             }
             if (options.cancelLabel != null) {
-                this.container.find('.cancelBtn').html(options.cancelLabel);
+                fakeThis.container.find('.cancelBtn').html(options.cancelLabel);
             }
 
-            this.locale.monthNames = moment.monthsShort().slice();
-            this.locale.daysOfWeek = moment.weekdaysMin().slice();
-            this.locale.firstDay = moment.localeData().firstDayOfWeek();
+            fakeThis.locale.monthNames = moment.monthsShort().slice();
+            fakeThis.locale.daysOfWeek = moment.weekdaysMin().slice();
+            fakeThis.locale.firstDay = moment.localeData().firstDayOfWeek();
         });
 
         // Recurso técnico para permitir multiplos idiomas: FIM
